@@ -3,7 +3,6 @@ import getWeb3 from '../utils/web3';
 import PokemonStoreABI from '../abis/PokemonStore.json';
 import '../components/BuyPokemon.css';
 
-
 const PokemonStoreAddress = '0x98C281a11a6C8151ca978d40be55Edb51756189d'; // Actualiza con la dirección correcta
 
 const AddPokemon = () => {
@@ -13,6 +12,7 @@ const AddPokemon = () => {
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
   const [stock, setStock] = useState('');
+  const [errorMessage, setErrorMessage] = useState(''); // Estado para el mensaje de error
 
   useEffect(() => {
     const init = async () => {
@@ -22,6 +22,10 @@ const AddPokemon = () => {
         console.log('Web3 instance:', web3Instance);
 
         const accounts = await web3Instance.eth.getAccounts();
+        if (accounts.length === 0) {
+          setErrorMessage('MetaMask no está conectado.');
+          return;
+        }
         setAccount(accounts[0]);
         console.log('Account:', accounts[0]);
 
@@ -33,6 +37,7 @@ const AddPokemon = () => {
         console.log('PokemonStore contract:', storeInstance);
       } catch (error) {
         console.error('Error initializing web3 or contract:', error);
+        setErrorMessage('Error inicializando web3 o contrato.');
       }
     };
     init();
@@ -52,12 +57,14 @@ const AddPokemon = () => {
       }
     } else {
       console.error('PokemonStore contract is not loaded.');
+      setErrorMessage('PokemonStore contract is not loaded.');
     }
   };
 
   return (
     <div>
       <h2>Agregar Pokemon</h2>
+      {errorMessage && <p className="error">{errorMessage}</p>}
       <input
         type="text"
         value={name}

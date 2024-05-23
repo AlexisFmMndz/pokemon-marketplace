@@ -13,6 +13,7 @@ const BuyPokemon = () => {
   const [pokemonId, setPokemonId] = useState('');
   const [quantity, setQuantity] = useState('');
   const [pokemons, setPokemons] = useState([]);
+  const [errorMessage, setErrorMessage] = useState(''); // Estado para el mensaje de error
 
   useEffect(() => {
     const init = async () => {
@@ -22,6 +23,10 @@ const BuyPokemon = () => {
         console.log('Web3 instance:', web3Instance);
 
         const accounts = await web3Instance.eth.getAccounts();
+        if (accounts.length === 0) {
+          setErrorMessage('MetaMask no está conectado.');
+          return;
+        }
         setAccount(accounts[0]);
         console.log('Account:', accounts[0]);
 
@@ -44,6 +49,7 @@ const BuyPokemon = () => {
         console.log('Loaded Pokemons:', loadedPokemons);
       } catch (error) {
         console.error('Error initializing web3 or contract:', error);
+        setErrorMessage('Error inicializando web3 o contrato.');
       }
     };
     init();
@@ -65,12 +71,14 @@ const BuyPokemon = () => {
       }
     } else {
       console.error('PokemonStore contract is not loaded.');
+      setErrorMessage('PokemonStore contract is not loaded.');
     }
   };
 
   return (
     <div>
       <h2>Comprar Pokemon</h2>
+      {errorMessage && <p className="error">{errorMessage}</p>}
       <select onChange={(e) => setPokemonId(e.target.value)}>
         <option value="">Selecciona un Pokemon</option>
         {pokemons.map((pokemon) => (

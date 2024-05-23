@@ -1,0 +1,38 @@
+.buy-pokemon {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+  }
+  
+  .buy-pokemon h2 {
+    margin-top: 0;
+  }
+  
+  .buy-pokemon select,
+  .buy-pokemon input {
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 1em;
+  }
+  
+  .buy-pokemon button {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #61dafb;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .buy-pokemon button:hover {
+    background-color: #21a1f1;
+  }
+  /* BuyPokemon.css */
+.error {
+  color: red;
+  font-weight: bold;
+  margin-top: 10px;
+}
