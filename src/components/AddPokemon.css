@@ -1,0 +1,51 @@
+/* BuyPokemon.css */
+.add-pokemon-container {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 500px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.add-pokemon-container h2 {
+  color: #ff5e62;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.add-pokemon-container input {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+  box-sizing: border-box;
+}
+
+.add-pokemon-container button {
+  background: #ff5e62;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1em;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-top: 10px;
+}
+
+.add-pokemon-container button:hover {
+  background: #ff9966;
+}
+
+.add-pokemon-container button:active {
+  background: #ff5e62;
+  transform: translateY(2px);
+}
+
+.add-pokemon-container input::placeholder {
+  color: #ccc;
+}
