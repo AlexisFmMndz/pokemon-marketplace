@@ -4,7 +4,7 @@ import PokemonStoreABI from '../abis/PokemonStore.json';
 import BN from 'bn.js'; // Importar BN desde bn.js
 import './BuyPokemon.css';
 
-const PokemonStoreAddress = '0x8758eFCF98fC8c453fc4c6A00EFa46C6B57742b4'; // Actualiza con la dirección correcta
+const PokemonStoreAddress = '0x3328358128832A260C76A4141e19E2A943CD4B6D'; // Actualiza con la dirección correcta
 
 const BuyPokemon = () => {
   const [web3, setWeb3] = useState(null);
